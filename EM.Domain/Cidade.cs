@@ -1,6 +1,5 @@
 ﻿using EM.Domain.Enums;
 using EM.Domain.Interface;
-using System.ComponentModel.DataAnnotations;
 
 namespace EM.Domain
 {
@@ -16,7 +15,7 @@ namespace EM.Domain
             Nome = nome;
             Uf = uf;
         }
-        
+
         public Cidade(int id, string nome, UF uf)
         {
             Id = id;

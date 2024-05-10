@@ -2,7 +2,7 @@
 
 namespace EM.Domain.Validacoes
 {
-    public class CpfValidationAttribute : ValidationAttribute 
+    public class CpfValidationAttribute : ValidationAttribute
     {
         protected override ValidationResult? IsValid(object value, ValidationContext validationContext)
         {
@@ -13,12 +13,7 @@ namespace EM.Domain.Validacoes
 
             string cpf = value.ToString();
 
-            if (!ValidaCpf.CPFValidacao(cpf))
-            {
-                return new ValidationResult("CPF inválido");
-            }
-
-            return ValidationResult.Success;
+            return !ValidaCpf.CPFValidacao(cpf) ? new ValidationResult("CPF inválido") : ValidationResult.Success;
         }
     }
 }

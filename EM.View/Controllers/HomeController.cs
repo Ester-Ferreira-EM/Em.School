@@ -6,8 +6,8 @@ namespace EM.View.Controllers
 {
     public class HomeController(IRepositorioAbstrato<Aluno> alunoRepositorio, IRepositorioAluno<Aluno> repositorioAluno) : Controller
     {
-            private readonly IRepositorioAbstrato<Aluno> _alunoRepositorio = alunoRepositorio;
-            private readonly IRepositorioAluno<Aluno> _repositorioAluno = repositorioAluno;
+        private readonly IRepositorioAbstrato<Aluno> _alunoRepositorio = alunoRepositorio;
+        private readonly IRepositorioAluno<Aluno> _repositorioAluno = repositorioAluno;
 
         public IActionResult TabelaAlunos()
         {

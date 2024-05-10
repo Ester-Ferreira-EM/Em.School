@@ -1,6 +1,5 @@
 ﻿using EM.Domain;
 using EM.Domain.Interface;
-using System.Globalization;
 
 namespace EM.Repository
 {

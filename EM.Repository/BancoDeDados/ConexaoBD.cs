@@ -5,7 +5,7 @@ namespace EM.Repository.ConexaoBancoDeDados
 {
     public static class ConexaoBD
     {
-        private static readonly string servidor = "localhost" ;
+        private static readonly string servidor = "localhost";
         private static readonly int port = 3054;
         private static readonly string bancoDeDados = "C:\\Workspace Ester\\BD\\ESCOLA.FDB";
         private static readonly string user = "SYSDBA";
@@ -22,10 +22,10 @@ namespace EM.Repository.ConexaoBancoDeDados
             stringBuilder["Charset"] = "UTF8";
 
             string connectionString = stringBuilder.ToString();
-		    FbConnection connection = new(connectionString);
+            FbConnection connection = new(connectionString);
             connection.Open();
             return connection;
-		}
+        }
     }
 
 }

@@ -7,7 +7,7 @@ namespace EM.Domain
 {
     public class Aluno : IEntidade
     {
-        public int? Matricula { get; set;}
+        public int? Matricula { get; set; }
 
         [StringLength(100, MinimumLength = 3)]
         public string Nome { get; set; }
@@ -21,9 +21,9 @@ namespace EM.Domain
         }
 
         [DataNascimentoValidation]
-        public DateTime DataNascimento { get; set; } 
-        public Sexo Sexo { get; set; } 
-        public Cidade Cidade { get; set; } 
+        public DateTime DataNascimento { get; set; }
+        public Sexo Sexo { get; set; }
+        public Cidade Cidade { get; set; }
 
         public Aluno() { }
 

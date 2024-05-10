@@ -2,53 +2,52 @@
 using EM.Domain.Enums;
 using EM.Domain.ExtensionMethods;
 using System.Data.Common;
-using System.Globalization;
 using System.Linq.Expressions;
 
 namespace EM.Repository
 {
-	public class RepositorioAluno : IRepositorioAbstrato<Aluno>, IRepositorioAluno<Aluno>
-	{
+    public class RepositorioAluno : IRepositorioAbstrato<Aluno>, IRepositorioAluno<Aluno>
+    {
         public IEnumerable<Aluno> Get(Expression<Func<Aluno, bool>> predicate) => GetAll().Where(predicate.Compile());
 
-		public void Add(Aluno aluno)
-		{
-			using DbConnection connection = ConexaoBancoDeDados.ConexaoBD.CrieConexao();
-			using DbCommand comando = connection.CreateCommand();
+        public void Add(Aluno aluno)
+        {
+            using DbConnection connection = ConexaoBancoDeDados.ConexaoBD.CrieConexao();
+            using DbCommand comando = connection.CreateCommand();
 
-			comando.CommandText = "INSERT INTO ALUNOS (NOME, CPF, DATANASCIMENTO, SEXO, CIDADE) " +
-							 "VALUES (@NOME, @CPF, @DATANASCIMENTO, @SEXO, @CIDADE)";
+            comando.CommandText = "INSERT INTO ALUNOS (NOME, CPF, DATANASCIMENTO, SEXO, CIDADE) " +
+                             "VALUES (@NOME, @CPF, @DATANASCIMENTO, @SEXO, @CIDADE)";
 
-			comando.Parameters.CreateParameter("@Nome", aluno.Nome);
-			comando.Parameters.CreateParameter("@CPF", aluno.CPF);
-			comando.Parameters.CreateParameter("@DataNascimento", aluno.DataNascimento);
-			comando.Parameters.CreateParameter("@Sexo", aluno.Sexo);
-			comando.Parameters.CreateParameter("@CIDADE", aluno.Cidade.Id);
+            comando.Parameters.CreateParameter("@Nome", aluno.Nome);
+            comando.Parameters.CreateParameter("@CPF", aluno.CPF);
+            comando.Parameters.CreateParameter("@DataNascimento", aluno.DataNascimento);
+            comando.Parameters.CreateParameter("@Sexo", aluno.Sexo);
+            comando.Parameters.CreateParameter("@CIDADE", aluno.Cidade.Id);
 
-			comando.ExecuteNonQuery();
-		}
+            comando.ExecuteNonQuery();
+        }
 
-		public void Update(Aluno aluno)
-		{
-			using DbConnection connection = ConexaoBancoDeDados.ConexaoBD.CrieConexao();
-			using DbCommand comando = connection.CreateCommand();
-			comando.CommandText = "UPDATE ALUNOS " +
-				"SET NOME = @Nome, " +
-				"CPF = @CPF, " +
-				"DATANASCIMENTO = @DataNascimento, " +
-				"SEXO = @Sexo, " +
-				"CIDADE = @Cidade " +
-				"WHERE MATRICULA = @Matricula";
+        public void Update(Aluno aluno)
+        {
+            using DbConnection connection = ConexaoBancoDeDados.ConexaoBD.CrieConexao();
+            using DbCommand comando = connection.CreateCommand();
+            comando.CommandText = "UPDATE ALUNOS " +
+                "SET NOME = @Nome, " +
+                "CPF = @CPF, " +
+                "DATANASCIMENTO = @DataNascimento, " +
+                "SEXO = @Sexo, " +
+                "CIDADE = @Cidade " +
+                "WHERE MATRICULA = @Matricula";
 
-			comando.Parameters.CreateParameter("@Nome", aluno.Nome);
-			comando.Parameters.CreateParameter("@CPF", aluno.CPF);
-			comando.Parameters.CreateParameter("@DataNascimento", aluno.DataNascimento);
-			comando.Parameters.CreateParameter("@Sexo", aluno.Sexo);
-			comando.Parameters.CreateParameter("@Matricula", aluno.Matricula);
-			comando.Parameters.CreateParameter("@Cidade", aluno.Cidade.Id);
+            comando.Parameters.CreateParameter("@Nome", aluno.Nome);
+            comando.Parameters.CreateParameter("@CPF", aluno.CPF);
+            comando.Parameters.CreateParameter("@DataNascimento", aluno.DataNascimento);
+            comando.Parameters.CreateParameter("@Sexo", aluno.Sexo);
+            comando.Parameters.CreateParameter("@Matricula", aluno.Matricula);
+            comando.Parameters.CreateParameter("@Cidade", aluno.Cidade.Id);
 
-			comando.ExecuteNonQuery();
-		}
+            comando.ExecuteNonQuery();
+        }
 
         public IEnumerable<Aluno> GetAll()
         {
@@ -85,21 +84,21 @@ namespace EM.Repository
             return alunos;
         }
 
-		public void Remove(Aluno aluno)
-		{
-			using DbConnection connection = ConexaoBancoDeDados.ConexaoBD.CrieConexao();
-			using DbCommand comando = connection.CreateCommand();
-			comando.CommandText = "DELETE FROM ALUNOS WHERE MATRICULA = @Matricula";
+        public void Remove(Aluno aluno)
+        {
+            using DbConnection connection = ConexaoBancoDeDados.ConexaoBD.CrieConexao();
+            using DbCommand comando = connection.CreateCommand();
+            comando.CommandText = "DELETE FROM ALUNOS WHERE MATRICULA = @Matricula";
 
-			comando.Parameters.CreateParameter("@Matricula", aluno.Matricula);
+            comando.Parameters.CreateParameter("@Matricula", aluno.Matricula);
 
-			comando.ExecuteNonQuery();
-		}
+            comando.ExecuteNonQuery();
+        }
 
-		public Aluno GetByMatricula(int matricula) => GetAll().First(c => c.Matricula == matricula);
+        public Aluno GetByMatricula(int matricula) => GetAll().First(c => c.Matricula == matricula);
 
         public IEnumerable<Aluno> GetByContendoNoNome(string parteDoNome) => GetAll().
-			Where(a => a.Nome.Contains(parteDoNome, StringComparison.OrdinalIgnoreCase));
+            Where(a => a.Nome.Contains(parteDoNome, StringComparison.OrdinalIgnoreCase));
 
     }
 }
