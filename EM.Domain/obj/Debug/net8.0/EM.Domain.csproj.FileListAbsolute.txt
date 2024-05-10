@@ -15,3 +15,4 @@ C:\Workspace Ester\EM-Escola\EM.Domain\obj\Debug\net8.0\refint\EM.Domain.dll
 C:\Workspace Ester\EM-Escola\EM.Domain\obj\Debug\net8.0\EM.Domain.pdb
 C:\Workspace Ester\EM-Escola\EM.Domain\obj\Debug\net8.0\EM.Domain.genruntimeconfig.cache
 C:\Workspace Ester\EM-Escola\EM.Domain\obj\Debug\net8.0\ref\EM.Domain.dll
+C:\Workspace Ester\EM-Escola\EM.Domain\obj\Debug\net8.0\EM.Domain.sourcelink.json

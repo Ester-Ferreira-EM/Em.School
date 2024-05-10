@@ -1,5 +1,6 @@
 ﻿using EM.Domain.Enums;
 using EM.Domain.Interface;
+using EM.Domain.Validacoes;
 using System.ComponentModel.DataAnnotations;
 
 namespace EM.Domain
@@ -11,6 +12,8 @@ namespace EM.Domain
         [StringLength(100, MinimumLength = 3)]
         public string Nome { get; set; }
         private string? cpf = string.Empty;
+
+        [CpfValidation]
         public string? CPF
         {
             get { return cpf; }

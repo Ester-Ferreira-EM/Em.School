@@ -20,3 +20,4 @@ C:\Workspace Ester\EM-Escola\EM.Repository\obj\Debug\net8.0\refint\EM.Repository
 C:\Workspace Ester\EM-Escola\EM.Repository\obj\Debug\net8.0\EM.Repository.pdb
 C:\Workspace Ester\EM-Escola\EM.Repository\obj\Debug\net8.0\EM.Repository.genruntimeconfig.cache
 C:\Workspace Ester\EM-Escola\EM.Repository\obj\Debug\net8.0\ref\EM.Repository.dll
+C:\Workspace Ester\EM-Escola\EM.Repository\obj\Debug\net8.0\EM.Repository.sourcelink.json
