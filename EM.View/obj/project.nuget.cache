@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "37t+0xNphz6c8Zfd6v7Ne9oIcG53B1gguy0+y9ybrOrFTXv1V524Lk9mU/CGB2lcFoGxpGJHfWYKtyoMx5Qncw==",
+  "success": true,
+  "projectFilePath": "C:\\Workspace Ester\\EM-Escola\\EM.View\\EM.View.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Escolar Manager\\.nuget\\packages\\firebirdsql.data.firebirdclient\\10.0.0\\firebirdsql.data.firebirdclient.10.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

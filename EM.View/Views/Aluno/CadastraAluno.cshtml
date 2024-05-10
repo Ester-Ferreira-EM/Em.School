@@ -1,0 +1,59 @@
+﻿@using EM.Domain
+@using EM.Domain.Enums
+@model EM.Domain.Aluno
+
+@{
+    bool isEdicao = ViewBag.IsEdicao ?? false;
+    string titulo = isEdicao ? "Editar Aluno" : "Cadastrar Aluno";
+    ViewData["Title"] = titulo;
+}
+<div class="container">
+    <form class="row g-3" asp-controller="Aluno" asp-action="CadastraAluno" method="post">
+        <h1 class="text-center">@ViewData["Title"]</h1>
+        <input type="hidden" asp-for="Matricula" />
+        <input type="hidden" id="isEdicao" name="isEdicao" value="@isEdicao" />
+        <div>
+            <label asp-for="Nome" for="inputNome" class="form-label">Nome</label>
+            <input asp-for="Nome" type="text" maxlength="100" class="form-control" name="Nome" id="Nome" placeholder="Nome" required>
+            <span asp-validation-for="Nome"></span>
+        </div>
+
+        <div>
+            <label asp-for="CPF" for=" inputCPF" class="form-label">CPF</label>
+            <input asp-for="CPF" oninput="mascara(this)" class="form-control col-md-2" name="CPF" id="CPF" placeholder="XXX.XXX.XXX-XX">
+            <span asp-validation-for="CPF"></span>
+        </div>
+
+        <div>
+            <label asp-for="DataNascimento" for="inputDataDeNascimento" class="form-label">Data de Nascimento</label>
+            <input asp-for="DataNascimento" type="date" class="form-control" id="DataNascimento" name="DataNascimento" asp-format="{0:dd/MM/yyyy}" required>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="Cidade.Id" for="inputCidade" class="form-label">Cidade</label>
+            <select asp-for="Cidade.Id" id="inputCidade" class="form-select" name="Cidade.Id">
+                <option selected disabled value="">Selecione</option>
+                @foreach (Cidade cidade in ViewBag.Cidades)
+                {
+                    <option value="@cidade.Id">@cidade.Nome - @cidade.Uf</option>
+                }
+            </select>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="Sexo" for="inputSexo" class="form-label">Sexo</label>
+            <select asp-for="Sexo" id="inputSexo" class="form-select" name="Sexo">
+                <option selected disabled value="">Selecione</option>
+                @foreach (var sexo in Enum.GetValues(typeof(Sexo)))
+                {
+                    <option value="@sexo">@sexo</option>
+                }
+            </select>
+        </div>
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-outline-success">Salvar</button>
+            <a class="btn btn-outline-secondary" asp-controller="Home" asp-action="TabelaAlunos">Voltar</a>
+        </div>
+    </form>
+</div>
