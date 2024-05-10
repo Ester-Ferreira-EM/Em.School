@@ -19,6 +19,8 @@ namespace EM.Domain
             get { return cpf; }
             set { cpf = string.IsNullOrWhiteSpace(value) ? string.Empty : value.Trim(); }
         }
+
+        [DataNascimentoValidation]
         public DateTime DataNascimento { get; set; } 
         public Sexo Sexo { get; set; } 
         public Cidade Cidade { get; set; } 
