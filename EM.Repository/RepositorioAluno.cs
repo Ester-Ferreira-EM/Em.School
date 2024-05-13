@@ -94,11 +94,9 @@ namespace EM.Repository
 
             comando.ExecuteNonQuery();
         }
-
         public Aluno GetByMatricula(int matricula) => GetAll().First(c => c.Matricula == matricula);
 
         public IEnumerable<Aluno> GetByContendoNoNome(string parteDoNome) => GetAll().
             Where(a => a.Nome.Contains(parteDoNome, StringComparison.OrdinalIgnoreCase));
-
     }
 }

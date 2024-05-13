@@ -26,7 +26,10 @@
 
         <div>
             <label asp-for="DataNascimento" for="inputDataDeNascimento" class="form-label">Data de Nascimento</label>
-            <input asp-for="DataNascimento" type="date" class="form-control" id="DataNascimento" name="DataNascimento" asp-format="{0:dd/MM/yyyy}" required>
+            <input asp-for="DataNascimento" type="date" class="form-control" id="DataNascimento" name="DataNascimento" required
+                   placeholder="DD/MM/YYYY"
+                   value="@(isEdicao ? Model.DataNascimento.ToString("yyyy-MM-dd") : "")"
+                   max="@DateTime.Now.ToString("yyyy-MM-dd")">
             <span asp-validation-for="DataNascimento"></span>
         </div>
 
